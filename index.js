@@ -21,3 +21,4 @@ const isPrime = (num) => {
 };
 
 console.log(isPrime(21));
+// just a comment here
