@@ -1,13 +1,23 @@
 const isPrime = require('./isPrime');
 
 const primeNumbers = (min, max) => {
-  if(max === undefined){
+  console.log('Computing prime numbers...');
+  return new Promise((resolve, reject) => {
+  setTimeout(() => {
+        if(max === undefined){
     max = min;
     min = 1;
   }
+  
+  max = Math.abs(max);
+  min = Math.abs(min);
+  
+  if(max < min) {
+    [min, max] = [max, min];
+  }
 
   if (typeof min !== 'number' || (typeof max !== 'number') ) {
-    throw TypeError('Only number argument is allowed');
+    reject('Only number argument is allowed');
   }
   
   const numbers = [];
@@ -16,8 +26,11 @@ const primeNumbers = (min, max) => {
       numbers.push(min);
     }
   }
-  return numbers.length ? numbers: [];
+  resolve(numbers.length ? numbers: []);
+  }, 2000); // End setTimeout
+  }); // End of promise
 };
 
-console.log(primeNumbers(78,100).join(','));
-console.log(primeNumbers(7).join(','));
+primeNumbers(-72, -111)
+  .then(res => console.log(res.join(',')))
+  .catch(console.log);
