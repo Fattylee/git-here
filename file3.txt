@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 this is file3 
+=======
+this is gibberish content for file3
+>>>>>>> add content to file3 - dev
